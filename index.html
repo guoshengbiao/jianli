@@ -83,6 +83,26 @@
     </ul>
 </div>
 
-<script type="text/javascript" src="js/musicAuto.js"></script>
+<script type="text/javascript">
+    ~function () {
+        var music = document.getElementById("music"), audioFir = document.getElementById("audioFir");
+        window.setTimeout(function () {
+            audioFir.play();
+            audioFir.addEventListener("canplay", function () {
+                music.style.display = "block";
+                music.className = "music musicMove";
+            }, false);
+        }, 500);
+        music.addEventListener("click", function () {
+            if (audioFir.paused) {
+                audioFir.play();
+                music.className = "music musicMove";
+                return;
+            }
+            audioFir.pause();
+            music.className = "music";
+        }, false);
+    }();
+</script>
 </body>
 </html>
